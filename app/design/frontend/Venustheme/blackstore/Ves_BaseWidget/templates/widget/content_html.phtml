@@ -1,0 +1,38 @@
+<?php
+$widget_heading = $this->getConfig('title');	
+$addition_cls = $this->getConfig('addition_cls');
+
+$content = $this->getConfig('html');
+
+$content = str_replace(" ", "+", $content);
+$content = base64_decode($content);
+$content = $this->getDataFilterHelper()->filter($content);
+
+$width = $this->getConfig('width');
+$aligment = $this->getConfig('aligment');
+$text_aligment = $this->getConfig('text_aligment');
+$custom_css = [];
+if($width && $width != "auto") {
+	$custom_css[] = "width:".trim($width);
+}
+if($aligment && $aligment != "auto") {
+	$custom_css[] = "float:".$aligment;
+}
+if($text_aligment && $aligment != "auto") {
+	$custom_css[] = "text-align:".$text_aligment;
+}
+?>
+<div class="widget-contenthtml ves-widget block <?php echo $addition_cls; ?>" <?php echo $custom_css?'style="'.implode(";", $custom_css).'"':'';?>>
+	<?php if($widget_heading): ?>
+    <div class="block-title"><strong><span><?php echo $widget_heading; ?></span></strong></div>
+	<?php endif; ?>
+    <?php if ($content): ?>
+       	<div class="widget-inner block-content"><?php echo $content; ?></div>
+    <?php endif; ?>
+    <?php if ($this->getConfig('enable_url')): ?>
+        <?php $url = $this->getConfig('url') ?>
+        <?php if ($url): ?>
+            <a href="<?php echo $this->getConfig('url'); ?>" class="<?php echo $this->getConfig('url_class'); ?>"><?php echo $this->getConfig('url_label'); ?></a>
+        <?php endif; ?>
+    <?php endif; ?>
+</div>

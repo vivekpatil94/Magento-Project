@@ -1,0 +1,93 @@
+<?php
+$dataHelper = $this->helper('Ves\ImageSlider\Helper\Data');
+$slides = $block->getSlides();
+$blockId = rand().time();
+$title = $this->getConfig('title');
+$addition_class = $this->getConfig('addition_class');
+
+// OWL Carousel
+$large_max_items = (int)$this->getConfig('large_max_items',6);
+$large_items = (int)$this->getConfig('large_items',5);
+$portrait_items = (int)$this->getConfig('portrait_items',4);
+$tablet_items = (int)$this->getConfig('tablet_items',4);
+$tablet_small_items = (int)$this->getConfig('tablet_small_items',2);
+$mobile_items = (int)$this->getConfig('mobile_items',1);
+
+$animateOut = $this->getConfig('animateout','0');
+$animateIn = $this->getConfig('animatein','0');
+$autoheight = $this->getConfig('autoheight');
+$autoplay = $this->getConfig('autoplay');
+$autoplay_timeout = $this->getConfig('autoplay_timeout');
+$autoplay_speed = $this->getConfig('autoplay_speed', 0);
+$nav_speed = $this->getConfig('nav_speed', 800);
+$dots_speed = $this->getConfig('dots_speed', 800);
+$autoplay_hover = $this->getConfig('autoplay_hover');
+$dots = $this->getConfig('dots');
+$nav = $this->getConfig('nav');
+$rtl = $this->getConfig('rtl');
+$loop = $this->getConfig('loop');
+$lazyLoad = $this->getConfig('lazyLoad');
+$touchDrag = $this->getConfig('touchdrag');
+$mouseDrag = $this->getConfig('mousedrag');
+$pullDrag = $this->getConfig('pulldrag');
+
+$enable_custom_nav = $this->getConfig('enable_custom_nav');
+$next_icon_class = $this->getConfig('next_icon_class');
+$previous_icon_class = $this->getConfig('previous_icon_class');
+?>
+<div class="block widget ves-widget imageslider-widget <?php echo $addition_class?$addition_class:'' ?>">
+	<?php if($title){ ?>
+	<div class="block-title">
+		<strong><?php echo $title ?></strong>
+	</div>
+	<?php } ?>
+	<div class="block-content">
+		<ul id="imageslider-<?php echo $blockId ?>" class="owl-carousel" >
+			<?php foreach ($slides as $k => $v) { ?>
+			<li class="slider-block"><?php echo $v; ?></li>
+			<?php } ?>
+		</ul>
+		<?php if($enable_custom_nav){ ?>
+		<?php $nav = false; ?>
+		<div class="customNavigation">
+			<a class="prev<?php echo $blockId ?>"><span class="<?php echo $previous_icon_class ?>"></span><?php echo __('Previous'); ?></a>
+			<a class="next<?php echo $blockId ?>"><span class="<?php echo $next_icon_class ?>"><?php echo __('Next'); ?></a>
+		</div>
+		<?php } ?>
+	</div>
+</div>
+
+<script>
+	require([
+		'jquery'
+		],function(){
+			jQuery(document).ready(function() {
+				var owl = jQuery('#imageslider-<?php echo $blockId ?>');
+				owl.owlCarousel({
+					animateOut: <?php echo $animateOut?'"'.$animateOut.'"':"false"; ?>,
+					animateIn: <?php echo $animateIn?'"'.$animateIn.'"':"false"; ?>,
+					items:1,
+					dot: <?php echo $dots?"true":"false" ?>,
+					nav: <?php echo $nav?"true":"false" ?>,
+					loop: <?php echo $loop?"true":"false" ?>,
+					autoplay: <?php echo $autoplay?"true":"false" ?>,
+					autoplayTimeout: <?php echo (int)$autoplay_timeout ?>,
+					autoplaySpeed: <?php echo $autoplay_speed?(int)$autoplay_speed:'false'; ?>,
+					navSpeed:  <?php echo $nav_speed?(int)$nav_speed:'false'; ?>,
+					dotsSpeed: <?php echo $dots_speed?(int)$dots_speed:'false'; ?>,
+					autoplayHoverPause: <?php echo $autoplay_hover?"true":"false" ?>,
+					autoHeight: <?php echo $autoheight?"true":"false" ?>,
+					lazyLoad: <?php echo $lazyLoad?"true":"false" ?>,
+					touchDrag: <?php echo $touchDrag?"true":"false" ?>,
+					mouseDrag: <?php echo $mouseDrag?"true":"false" ?>,
+					pullDrag: <?php echo $pullDrag?"true":"false" ?>,
+				});
+				jQuery(".prev<?php echo $blockId ?>").click(function () {
+					owl.trigger('prev.owl.carousel');
+				});
+				jQuery(".next<?php echo $blockId ?>").click(function () {
+					owl.trigger('next.owl.carousel');
+				});
+			});
+});
+</script>

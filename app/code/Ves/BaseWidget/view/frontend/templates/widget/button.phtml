@@ -1,0 +1,31 @@
+<?php
+$widget_heading = $this->getConfig('title');	
+$addition_cls = $this->getConfig('addition_cls');
+$stylecls =  $this->getConfig('stylecls');
+$button_title = $this->getConfig('button_title');	
+$href = $this->getConfig('href');
+$icon = $this->getConfig('icon');
+$size = $this->getConfig('size');
+$color_button =  $this->getConfig('color_button');	
+$el_class = $this->getConfig('el_class');
+
+$content_html = $this->getConfig('html');
+$content_html = str_replace(" ", "+", $content_html);
+$content_html = base64_decode($content_html);
+$content_html = $this->getDataFilterHelper()->filter($content_html);
+if ($href): 
+?>
+	<div class="ves-widget widget-button block <?php echo $addition_cls; ?> <?php if (isset($stylecls)&&$stylecls) echo 'block-'.$stylecls;?>">
+		<?php if (isset($widget_heading)&&!empty($widget_heading)): ?>
+		<div class="block-title">
+			<?php echo $widget_heading; ?>
+		</div>
+		<?php endif; ?>
+		<div class="widget-inner block-content">
+			<a href="<?php echo $href; ?>" class="btn <?php echo $color_button." ".$el_class." ".$size;?>" title="<?php echo $button_title;?>" <?php echo $content_html; ?>>
+				<i class="<?php echo $icon; ?>"></i>
+				<?php echo $button_title; ?>
+			</a>
+		</div>
+	</div>
+<?php endif;?>

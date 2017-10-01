@@ -1,0 +1,108 @@
+/*
+Default:
+ background-color: #4ACFD4;
+ color: #fff;
+
+Hover:
+  background-color: #333;
+  color: #4ACFD4;
+
+Link Hover:
+color: #4ACFD4;
+
+Button Hover: #4ACFD4;
+
+*/
+.product-reviews-summary .reviews-actions a:hover, 
+.ves-megamenu .dropdown-menu a:hover,
+.block.ves-menu .ves-vertical li.level0:hover > a,
+.block.ves-menu .ves-vertical li.level0.active > a
+{
+  color: #4ACFD4!important;
+}
+.columns a:hover, .columns .alink:hover, .ves-menu .ves-vertical li.level0:hover > a,
+.page-header .block-header em, .footer-top .nav-links li a:hover, body .page-wrapper a:hover, 
+body .page-wrapper .alink:hover, .product-info-main .product-info-stock-sku .stock.available, 
+.product-info-main .product-info-stock-sku .stock.unavailable, .countdown-timmer .item-detail,
+.widget-html.html-v2 .block-content a:hover, .blog-posts .owl-carousel .post-title a:hover,
+.blog-posts .post-block .read-more:hover, .ourservice-block.ourservice-v3 .ourservice-content h4,
+.page-wrapper .products.wrapper ~ .toolbar .toolbar-amount, .cms-page-error h2,
+.blog-posts.blog-v2 .owl-carousel .post-title a:hover
+{
+  color: #4ACFD4;
+}
+
+.scrollup, body .page-wrapper .owl-carousel .owl-dots .owl-dot:hover span,
+.block-warning .nav-links li a:hover, .tags-link li a:hover, .block.tags li a:hover, 
+.ves-block .tagcloud li a:hover, body .page-wrapper .btn, .page-header .top-banner .close,
+.header3 .minicart-wrapper .w-item .total-qty .counter-number, .widget-html.html-v3 .btn:hover
+{
+  background-color: #4ACFD4;
+}
+
+.ves-menutop .ves-megamenu li.level0.active > a, .ves-menutop .ves-megamenu li.level0:hover > a,
+.product-block .product-item-details .product-item-name a:hover, .copyright span,
+.page-main > .page-title-wrapper .page-title, .page-header .setting-links-dropdown li a:hover, 
+.product-info-main .add-action:hover, .bundle-options-container .add-action:hover, 
+.product-add-form .add-action:hover, .block.blackstore-footer .nav-links li a:hover,
+.page-wrapper .columns .widget-carousel:not(.widget-carousel-v2) .slider-content h3 span,
+.vesblog-category-view .post-title a:hover, .ves-bloglatest .post-title a:hover
+{color: #4ACFD4;}
+
+.block.tmls-widget .tmls-item-info .tmls-name,
+.page-wrapper .columns .widget-carousel.widget-carousel-v2 .slider-content span, 
+.page-wrapper .columns .widget-carousel.widget-carousel-v2 .slider-content em,
+.vesblog-category-view .post-summary .desc > a, .ves-bloglatest .post-summary .desc > a,
+.page-header .header3 .header-links .options .action.toggle,
+.page-header .top-banner .content h3 span,
+.block.blackstore-footer.footer2 .footer2-content .nav-links li a:hover,
+.block.blackstore-footer.footer2 .footer2-content .infom em,
+.block.blackstore-footer .copyright span{color: #4ACFD4;}
+
+.page-wrapper .widget-carousel .slider-content .btn:hover,
+.product-info-main .product-addto-links a:hover, .product-options-bottom .product-addto-links a:hover,
+.review-form .action.submit.primary:hover, .vesblog-category-view .post-summary > a:hover, .ves-bloglatest .post-summary > a:hover,
+.minicart-wrapper, .page-wrapper .columns .widget-carousel:not(.widget-carousel-v2) .slider-content .btn:hover,
+.page-wrapper .columns .owl-carousel .owl-nav [class*="owl-"]:hover, .page-wrapper .columns .owl-carousel .owl-nav [class*="owl-"]:focus,
+.product-block .product-item-info .quick-view:hover, .action.primary::before, .ourservice-block i::after, .ourservice-block.first i{
+  background: #4ACFD4;
+}
+
+.block.instagram_carousel_widget .block-title, 
+.block.instagram_carousel_widget [class*="colorbox-instagram_"]::before,
+.productlist-widget ul.etabs li a:hover, .productlist-widget ul.etabs li a.active,
+.widget-images.widget-images-v3 h4, .widget-html.html-v3 h3::after,
+.page-wrapper .columns .widget-carousel.widget-carousel-v2 .item-content:hover .slider-content{background: #4ACFD4;}
+
+.product-block .product-item-info .actions-primary .add-to-cart:hover, .product-block .product-item-info .actions-primary .add-to-cart:focus,
+.product-block .product-item-info .product-item-actions .actions-secondary a:hover, 
+.product-block .product-item-info .product-item-actions .actions-secondary a:focus,
+.product-info-main .box-tocart .action.tocart:hover, .bundle-options-container .box-tocart .action.tocart:hover, 
+.product-add-form .box-tocart .action.tocart:hover
+{background: #4ACFD4!important;}
+
+.review-form .action.submit.primary:hover, .fotorama__thumb-border,
+.vesblog-category-view .post-summary > a:hover, .ves-bloglatest .post-summary > a:hover,
+.ves-menutop .ves-megamenu .products-widget .owl-nav a:hover{border-color: #4ACFD4;}
+
+._keyfocus *:focus, input:focus:not([disabled]), textarea:focus:not([disabled]), select:focus:not([disabled]){
+  box-shadow: 0 0 3px 1px #4ACFD4;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"]{
+  border-color: #4ACFD4;
+}
+
+body .page-wrapper .owl-carousel .owl-dots .owl-dot.active span,
+.ves-menutop .ves-megamenu li.level0.active > a, .ves-menutop .ves-megamenu li.level0:hover > a{border-color: #4ACFD4;}
+.action.primary{border-color: #4ACFD4!important;}
+
+/* Custom */
+.block.instagram_carousel_widget .block-title::before,
+.page-wrapper .columns .widget-carousel.widget-carousel-v2 .slider-content::before{border-bottom-color: #4ACFD4;}
+.sidebar .block.ves-menu, .blog-cats{border-top-color: #4ACFD4;}
+.widget-images.widget-images-v3 h4::before{border-right-color: #2CB1B6;}
+.rtl .widget-images.widget-images-v3 h4::before{border-left-color: #2CB1B6;}
+@media (max-width: 991px) {
+.page-header .minicart-warp .minicart-wrapper .w-item .total-qty .counter-number{background: #4ACFD4;}
+}

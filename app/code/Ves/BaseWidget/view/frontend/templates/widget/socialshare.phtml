@@ -1,0 +1,90 @@
+<?php
+	$modid = rand().time();
+	
+	$enable_collapse = $this->getConfig("enable_collapse", 0);
+	$enable_facebook = $this->getConfig("enable_facebook", 1);
+	$enable_twitter = $this->getConfig("enable_twitter", 1);
+	$enable_googleplus = $this->getConfig("enable_googleplus", 1);
+	$enable_pinterest = $this->getConfig("enable_pinterest", 1);
+	$enable_onlyicon = $this->getConfig("enable_onlyicon", 1);
+
+	$is_product_share = $this->getConfig("is_product_share", 0);
+	$_productName = $this->getConfig("item_title", "");
+	$_productImageUrl = $this->getConfig("item_image", "");
+	$_productUrl = $this->getConfig("item_url", "");
+	$_productSammary = "";
+
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	if($is_product_share) {
+		$_product = $this->getProduct();
+		$_productName = urlencode(trim($_helper->productAttribute($_product, $_product->getName(), 'name')));
+
+		//Product image
+		//$image = 'category_page_grid' or 'category_page_list';
+		$image = 'category_page_grid';
+		$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+		$productImage = $_imagehelper->init($_product, $image)->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize(400)->getUrl();
+		$_productImageUrl = urlencode(trim($productImage));
+		$_productUrl = urlencode(trim($_product->getProductUrl()));
+		$_productSammary = $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description');
+	} else {
+		$_productName = urlencode(trim($_productName));
+		$_productImageUrl = urlencode(trim($_productImageUrl));
+		$_productUrl = urlencode(trim($_productUrl));
+	}
+	
+?>
+<div class="ves-widget widget-socialshare block">
+	<?php if (isset($widget_heading)&&!empty($widget_heading)): ?>
+	<div class="block-title">
+		<?php if($enable_collapse): ?><span class="opener hidden-lg hidden-md" data-toggle="collapse" data-target="#widget-socialshare<?php echo $modid; ?>"><i class="fa fa-angle-down"></i></span><?php endif; ?>
+		<strong><span><?php echo $widget_heading; ?></span></strong>
+	</div>
+	<?php endif; ?>
+	<div id="widget-socialshare<?php echo $modid; ?>" class="widget-inner block-content <?php if($enable_collapse): ?> widget-enanle-collapse collapse in <?php endif; ?>">
+
+		<ul class="social-sharing-links">
+		    <?php if($enable_facebook): ?>
+		    <li>
+		        <?php $_u = 'p[url]=' . $_productUrl . '&p[images][0]=' . $_productImageUrl . '&p[title]=' . $_productName . '&p[summary]=' . urlencode(trim($_productSammary)); ?>
+		        <a href="<?php echo 'http://www.facebook.com/sharer.php?s=100&' . $_u; ?>" target="_blank" title="<?php echo __('Share on Facebook') ?>" class="link-facebook">
+		            <i class="fa fa-facebook"><?php if(!$enable_onlyicon): ?><?php echo __('Share Facebook') ?><?php endif; ?></i>
+		        </a>
+		    </li>
+			<?php endif; ?>
+			<?php if($enable_twitter): ?>
+		    <li>
+		        <a href="<?php echo 'http://twitter.com/home?status=' . $_productName . '+' . $_productUrl; ?>" target="_blank" title="<?php echo __('Share on Twitter') ?>" class="link-twitter"><i class="fa fa-twitter"><?php if(!$enable_onlyicon): ?><?php echo __('Share on Twitter') ?><?php endif; ?></i></a>
+		    </li>
+			<?php endif; ?>
+			<?php if($enable_googleplus): ?>
+		    <li>
+			    <a class="share plus link-plus" title="<?php echo __('Google Plus');?>" href="https://plus.google.com/share?url=<?php echo $_productUrl; ?>" target="_BLANK" rel="nofollow"><i class="fa fa-google-plus"><?php if(!$enable_onlyicon): ?><?php echo __('Google');?><?php endif; ?></i></a>
+			</li>
+			<?php endif; ?>
+			<?php if($enable_pinterest): ?>
+			<li>
+			    <a class="share pinterest link-pinterest" title="<?php echo __('Pinterest');?>" href="http://pinterest.com/pin/create/button/?url=<?php echo $_productUrl; ?>&media=<?php echo $_productImageUrl;?>&description=<?php echo $_productName;?>"  target="_BLANK" rel="nofollow"><i class="fa fa-pinterest"><?php if(!$enable_onlyicon): ?><?php echo __('Pinterest');?><?php endif;?></i></a>
+			</li>
+		    <?php endif; ?>
+		</ul>
+		
+ </div>
+</div>
+<?php if($enable_collapse): ?>
+<script type="text/javascript">
+require(['jquery'],function($){
+    $(document).ready(function(){
+	require([
+		'jquery'
+		<?php if($this->helper("Ves\All\Helper\Data")->getConfig("enable_bootstrap_js")): ?>
+		,"Ves_All/lib/bootstrap/js/bootstrap.min"
+		<?php endif; ?>
+		],function($){
+			
+		});
+	});
+});
+</script>
+<?php endif; ?>
+<div style="clear:both;"></div>
